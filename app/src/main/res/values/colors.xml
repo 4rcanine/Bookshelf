@@ -5,5 +5,6 @@
     <color name="primaryColor">#8A2BE2</color>
     <color name="primaryDarkColor">#4B0082</color>
     <color name="accentColor">#7B68EE</color>
-
+    <color name="purple_700">#3700B3</color>
+    <color name="purple_500">#6200EE</color>
 </resources>

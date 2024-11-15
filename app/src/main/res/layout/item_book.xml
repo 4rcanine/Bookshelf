@@ -1,26 +1,22 @@
-<!-- res/layout/item_book.xml -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:layout_margin="4dp">
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/book_thumbnail"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder" />
+        android:contentDescription="@string/book_thumbnail_desc" />
 
     <TextView
         android:id="@+id/book_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="4dp"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
-        android:textColor="#000"
-        android:maxLines="2"
-        android:ellipsize="end" />
+        android:paddingTop="8dp" />
 </LinearLayout>

@@ -2,7 +2,7 @@ package com.example.bookshelf.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bookshelf.R
 import com.example.bookshelf.adapter.BooksAdapter
 import com.example.bookshelf.viewmodel.BooksViewModel
+import androidx.appcompat.widget.Toolbar
 
 class BookshelfFragment : Fragment(R.layout.fragment_bookshelf) {
     private val viewModel: BooksViewModel by viewModels()
@@ -18,15 +19,22 @@ class BookshelfFragment : Fragment(R.layout.fragment_bookshelf) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+        (activity as? AppCompatActivity)?.setSupportActionBar(toolbar)
+        toolbar.title = "Pokémon Books"
+
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.books_recycler_view)
-        val loadingIndicator = view.findViewById<ProgressBar>(R.id.loading_indicator)
+        val loadingIndicator = view.findViewById<View>(R.id.loading_indicator)
 
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         adapter = BooksAdapter(emptyList())
         recyclerView.adapter = adapter
 
+
         viewModel.booksLiveData.observe(viewLifecycleOwner) { books ->
-            adapter = BooksAdapter(books) // Update adapter’s list
+            adapter = BooksAdapter(books)
             recyclerView.adapter = adapter
         }
 
@@ -34,8 +42,7 @@ class BookshelfFragment : Fragment(R.layout.fragment_bookshelf) {
             loadingIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
 
-        // Example search
-        viewModel.searchBooks("jazz history")
+
+        viewModel.searchBooks("Pokémon")
     }
 }
-

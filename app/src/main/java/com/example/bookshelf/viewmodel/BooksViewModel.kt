@@ -17,11 +17,10 @@ class BooksViewModel : ViewModel() {
             loadingLiveData.value = true
             try {
                 val books = repository.searchBooks(query)
-                booksLiveData.value = books // This updates the UI with the books
+                booksLiveData.value = books
             } finally {
                 loadingLiveData.value = false
             }
         }
     }
-
 }

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.bookshelf.R
 import com.example.bookshelf.model.Book
 
-class BooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<BooksAdapter.BookViewHolder>() {
+class BooksAdapter(private var books: List<Book>) : RecyclerView.Adapter<BooksAdapter.BookViewHolder>() {
 
     class BookViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = view.findViewById(R.id.book_title)
@@ -33,4 +33,9 @@ class BooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<BooksAd
     }
 
     override fun getItemCount() = books.size
+
+    fun updateBooks(newBooks: List<Book>) {
+        books = newBooks
+        notifyDataSetChanged()
+    }
 }

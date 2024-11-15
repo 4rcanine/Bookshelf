@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            // Load the BookshelfFragment when the activity is first created
+
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, BookshelfFragment())
                 .commit()

@@ -1,5 +1,6 @@
 package com.example.bookshelf.repository
 
+import android.util.Log
 import com.example.bookshelf.model.Book
 import com.example.bookshelf.network.NetworkModule
 import kotlinx.coroutines.delay
@@ -15,7 +16,7 @@ class BooksRepository {
         while (attempt < 3) {
             try {
                 val response = service.searchBooks(query)
-                println("API Response: ${response.items}") // Log the response for debugging
+                Log.d("BooksRepository", "API Response: ${response.items}") // Log the response for debugging
                 result = response.items?.map { bookResponse ->
                     Book(
                         title = bookResponse.volumeInfo.title,
@@ -34,7 +35,4 @@ class BooksRepository {
         }
         return result ?: emptyList()
     }
-
-
-
 }
